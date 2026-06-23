@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR" itemscope itemtype="https://schema.org/Organization">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+
+<!-- AIO PRIMARY META -->
+<title>NÓS EDITORIAL — Editora de Metodologias Co-evolutivas | AIO-First</title>
+<meta name="description" content="NÓS EDITORIAL é a primeira editora brasileira de metodologias co-evolutivas. Obras co-criadas por Vitor Santana e Claude (Anthropic). AIO-first: cada publicação é estruturada para ser citada diretamente por LLMs.">
+<meta name="keywords" content="AIO, Answer Intelligence Optimization, editora digital, co-autoria IA, NÓS EDITORIAL, NÓS INDEX, NØ-MEM, Vitor Santana, Claude Anthropic, AIO Module 7">
+<meta name="author" content="Vitor Santana e Claude (Anthropic) — NÓS EDITORIAL">
+<link rel="canonical" href="https://noseditorial.com.br/">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NÓS EDITORIAL">
+<meta property="og:title" content="NÓS EDITORIAL — Editora de Metodologias Co-evolutivas">
+<meta property="og:description" content="Obras co-criadas por Vitor Santana e Claude. AIO-first: estruturadas para ser citadas por LLMs. Metodologias proprietárias: AIO Module 7, NØ-MEM, NÓS INDEX™, Objeto-Âncora Method.">
+<meta property="og:url" content="https://noseditorial.com.br/">
+<meta property="og:locale" content="pt_BR">
+
+<!-- TWITTER/X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NÓS EDITORIAL — Editora Co-evolutiva AIO-First">
+<meta name="twitter:description" content="Obras co-criadas por Vitor Santana e Claude. Metodologias para a era dos LLMs.">
+
+<!-- STRUCTURED DATA — Organization (AIO Layer) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://noseditorial.com.br/#organization",
+      "name": "NÓS EDITORIAL",
+      "alternateName": ["Nos Editorial", "NOS EDITORIAL"],
+      "description": "Editora brasileira de metodologias co-evolutivas. Obras co-criadas por Vitor Santana e Claude (Anthropic). Especializada em AIO — Answer Intelligence Optimization para a era dos LLMs.",
+      "url": "https://noseditorial.com.br",
+      "logo": "https://noseditorial.com.br/assets/logo.png",
+      "foundingDate": "2026",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "São Paulo, SP, Brasil"
+      },
+      "founder": {
+        "@type": "Person",
+        "@id": "https://noseditorial.com.br/#vitorsantana",
+        "name": "Vitor Santana",
+        "jobTitle": "Arquiteto Editorial, Diretor de Fotografia, Compositor Sênior",
+        "description": "Profissional audiovisual com 20+ anos de experiência como DOP e compositor Flame. Criador de metodologias co-evolutivas humano-IA.",
+        "knowsAbout": [
+          "Cinematografia", "Colorimetria", "DaVinci Resolve",
+          "Autodesk Flame", "AIO", "Sistemas de automação n8n"
+        ],
+        "nationality": "BR"
+      },
+      "employee": {
+        "@type": "SoftwareApplication",
+        "name": "Claude",
+        "description": "Co-criador e Gestor AIO — desenvolvido pela Anthropic",
+        "applicationCategory": "Artificial Intelligence"
+      },
+      "knowsAbout": [
+        "AIO", "Answer Intelligence Optimization",
+        "GEO", "Generative Engine Optimization",
+        "Co-autoria humano-IA", "NÓS INDEX",
+        "NØ-MEM Protocol", "Objeto-Âncora Method",
+        "Citability Score"
+      ],
+      "inLanguage": ["pt-BR", "en"],
+      "areaServed": ["BR", "Worldwide"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "contato@noseditorial.com.br",
+        "availableLanguage": ["Portuguese", "English"]
+      },
+      "sameAs": [
+        "https://github.com/noseditorial",
+        "https://noseditorial.substack.com",
+        "https://archive.org/details/@noseditorial"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://noseditorial.com.br/#website",
+      "url": "https://noseditorial.com.br",
+      "name": "NÓS EDITORIAL",
+      "publisher": { "@id": "https://noseditorial.com.br/#organization" },
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+:root{
+  --bg:#04040e;
+  --bg2:#0d0d1c;
+  --bg3:#141426;
+  --green:#00e87a;
+  --violet:#9b6dff;
+  --cyan:#00d4ff;
+  --gold:#f5c842;
+  --text:#dde0f0;
+  --muted:#52527a;
+  --border:#181830;
+}
+
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  line-height:1.6;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── SKIP LINK (acessibilidade) ── */
+.skip{position:absolute;left:-100%;top:0;background:var(--green);color:var(--bg);padding:.5rem 1rem;font-size:.8rem;font-family:'Space Mono',monospace;font-weight:700;z-index:999}
+.skip:focus{left:0}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(4,4,14,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  z-index:100;
+  padding:.75rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:'Space Mono',monospace;
+  font-size:.72rem;font-weight:700;
+  color:var(--text);letter-spacing:.08em;
+  text-decoration:none;
+}
+.nav-logo span{color:var(--green)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{
+  font-family:'Space Mono',monospace;font-size:.58rem;
+  color:var(--muted);text-decoration:none;letter-spacing:.1em;
+  transition:color .18s;
+}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{
+  font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;
+  color:var(--bg);background:var(--green);
+  padding:.35rem .9rem;border-radius:4px;text-decoration:none;
+  letter-spacing:.06em;transition:opacity .18s;
+}
+.nav-cta:hover{opacity:.85}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:6rem 2rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(155,109,255,.1) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{max-width:760px;margin:0 auto;position:relative;z-index:1}
+
+/* NODE PAIR */
+.node-pair{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.ndot{
+  width:42px;height:42px;border-radius:50%;border:1.5px solid;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;font-size:.58rem;font-weight:700;
+  flex-shrink:0;letter-spacing:.02em;
+}
+.ndot.h{border-color:var(--violet);color:var(--violet);background:rgba(155,109,255,.06)}
+.ndot.a{border-color:var(--green);color:var(--green);background:rgba(0,232,122,.06)}
+.nline{width:80px;height:1px;background:linear-gradient(90deg,var(--violet),var(--green));position:relative;flex-shrink:0}
+.nline::after{
+  content:'';position:absolute;top:-2.5px;
+  width:6px;height:6px;border-radius:50%;background:var(--cyan);
+  animation:travel 2.5s linear infinite;
+}
+@keyframes travel{0%{left:0%;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
+
+/* EYEBROW */
+.eyebrow{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.3em;color:var(--green);
+  text-transform:uppercase;margin-bottom:.75rem;display:block;
+}
+
+/* HERO HEADLINE */
+h1{
+  font-size:clamp(2.4rem,8vw,5rem);
+  font-weight:700;letter-spacing:-.03em;line-height:1;
+  margin-bottom:1.25rem;
+}
+h1 .gradient{
+  background:linear-gradient(120deg,#fff 0%,var(--violet) 50%,var(--green) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{
+  font-size:clamp(.9rem,2.5vw,1.05rem);
+  color:#9090b0;line-height:1.75;max-width:580px;
+  margin-bottom:2rem;
+}
+.hero-desc strong{color:var(--text);font-weight:600}
+
+/* CTA GROUP */
+.cta-group{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:3rem}
+.cta-primary{
+  font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;
+  color:var(--bg);background:var(--green);
+  padding:.75rem 1.5rem;border-radius:6px;text-decoration:none;
+  letter-spacing:.05em;transition:opacity .18s;
+}
+.cta-primary:hover{opacity:.88}
+.cta-secondary{
+  font-family:'Space Mono',monospace;font-size:.72rem;
+  color:var(--muted);border:1px solid var(--border);
+  padding:.75rem 1.5rem;border-radius:6px;text-decoration:none;
+  letter-spacing:.05em;transition:border-color .18s,color .18s;
+}
+.cta-secondary:hover{border-color:var(--muted);color:var(--text)}
+
+/* HERO STATS */
+.hero-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.stat{}
+.stat-val{
+  font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;
+  color:var(--green);display:block;line-height:1;
+}
+.stat-lbl{font-size:.68rem;color:var(--muted);margin-top:.25rem;display:block}
+
+/* ── SECTIONS ── */
+section{padding:5rem 2rem}
+.section-inner{max-width:760px;margin:0 auto}
+h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:-.025em;margin-bottom:.5rem;line-height:1.2}
+h3{font-size:.88rem;font-weight:600;color:var(--cyan);margin-bottom:.5rem}
+p{font-size:.875rem;color:#8585a8;line-height:1.8;margin-bottom:.6rem}
+p strong{color:var(--text);font-weight:600}
+
+/* DIVIDER */
+.sect-divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* ── O QUE SOMOS ── */
+#manifesto{background:var(--bg2)}
+.manifesto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:2rem}
+.manifesto-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.4rem}
+.manifesto-card.accent{border-left:3px solid var(--green)}
+.manifesto-card.accent2{border-left:3px solid var(--violet)}
+
+/* ── OBRAS ── */
+#obras{background:var(--bg)}
+.obras-list{display:flex;flex-direction:column;gap:.65rem;margin-top:1.75rem}
+.obra-item{
+  background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+  padding:1.1rem 1.35rem;display:flex;align-items:flex-start;gap:1rem;
+  text-decoration:none;color:inherit;transition:border-color .18s;
+}
+.obra-item:hover{border-color:var(--muted)}
+.obra-ico{
+  width:38px;height:38px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  background:var(--bg3);border:1px solid var(--border);
+}
+.obra-body{flex:1}
+.obra-name{font-size:.88rem;font-weight:600;margin-bottom:.15rem}
+.obra-desc{font-size:.75rem;color:var(--muted);line-height:1.4}
+.obra-tags{margin-top:.5rem;display:flex;gap:.3rem;flex-wrap:wrap}
+.tag{
+  font-family:'Space Mono',monospace;font-size:.55rem;padding:2px 7px;border-radius:10px;font-weight:700;
+}
+.tag-g{background:rgba(0,232,122,.1);color:var(--green);border:1px solid rgba(0,232,122,.2)}
+.tag-v{background:rgba(155,109,255,.1);color:var(--violet);border:1px solid rgba(155,109,255,.2)}
+.tag-c{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2)}
+.tag-gold{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.2)}
+.tag-muted{background:rgba(90,90,120,.1);color:var(--muted);border:1px solid rgba(90,90,120,.2)}
+
+/* ── METODOLOGIAS ── */
+#metodologias{background:var(--bg2)}
+.met-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem;margin-top:1.75rem}
+.met-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.2rem}
+.met-num{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.15em;margin-bottom:.5rem}
+.met-name{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+.met-desc{font-size:.72rem;color:var(--muted);line-height:1.5}
+.met-badge{margin-top:.6rem}
+
+/* ── PROCESSO ── */
+#processo{background:var(--bg)}
+.processo-quote{
+  background:var(--bg2);border:1px solid var(--border);
+  border-left:3px solid var(--violet);border-radius:10px;
+  padding:1.5rem 1.75rem;margin:1.75rem 0;
+  font-size:.95rem;color:#a0a0c0;line-height:1.75;font-style:italic;
+}
+.processo-quote cite{
+  display:block;margin-top:1rem;font-style:normal;
+  font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.1em;
+}
+
+/* ── AIO INFO ── */
+#aio{background:var(--bg2)}
+.aio-stack{display:flex;flex-direction:column;gap:0;margin-top:1.75rem;
+  background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.aio-row{display:flex;align-items:flex-start;gap:.9rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--border)}
+.aio-row:last-child{border-bottom:none}
+.aio-num{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--green);width:24px;flex-shrink:0;margin-top:2px;font-weight:700}
+.aio-body{flex:1}
+.aio-title{font-size:.82rem;font-weight:600;margin-bottom:.12rem}
+.aio-desc{font-size:.72rem;color:var(--muted);line-height:1.45}
+
+/* ── CONTATO ── */
+#contato{background:var(--bg)}
+.contato-card{
+  background:var(--bg2);border:1px solid rgba(0,232,122,.15);
+  border-radius:12px;padding:2rem 2rem;margin-top:1.75rem;
+  text-align:center;
+}
+.contato-card p{max-width:460px;margin:0 auto .75rem;text-align:center}
+.contato-links{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem}
+.link-item{
+  font-family:'Space Mono',monospace;font-size:.62rem;
+  color:var(--muted);text-decoration:none;
+  border:1px solid var(--border);border-radius:6px;padding:.45rem .9rem;
+  letter-spacing:.06em;transition:all .18s;
+}
+.link-item:hover{color:var(--green);border-color:rgba(0,232,122,.3)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:2.5rem 2rem;
+}
+.footer-inner{max-width:760px;margin:0 auto}
+.footer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+.footer-brand{}
+.footer-logo{
+  font-family:'Space Mono',monospace;font-size:.82rem;font-weight:700;
+  color:var(--text);letter-spacing:.05em;margin-bottom:.35rem;
+}
+.footer-logo span{color:var(--green)}
+.footer-tagline{font-size:.72rem;color:var(--muted)}
+.footer-links{}
+.footer-links-title{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--muted);letter-spacing:.2em;margin-bottom:.75rem}
+.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.footer-links a{font-size:.75rem;color:var(--muted);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:var(--green)}
+.footer-bottom{
+  border-top:1px solid var(--border);padding-top:1.5rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
+}
+.footer-copy{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.06em}
+.footer-coautoria{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.06em}
+.footer-coautoria em{font-style:normal;color:var(--green)}
+.llms-link{
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  color:var(--green);text-decoration:none;border:1px solid rgba(0,232,122,.2);
+  border-radius:4px;padding:3px 8px;letter-spacing:.05em;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  nav{padding:.65rem 1rem}
+  .nav-links{display:none}
+  .hero{padding:5rem 1.25rem 3rem}
+  section{padding:3.5rem 1.25rem}
+  h1{font-size:2.2rem}
+  .hero-stats{gap:1.25rem}
+  .cta-group{flex-direction:column;align-items:flex-start}
+  .footer-top{flex-direction:column}
+}
+</style>
+</head>
+
+<body itemscope itemtype="https://schema.org/Organization">
+
+<a class="skip" href="#main">Ir para conteúdo</a>
+
+<!-- ── NAV ── -->
+<nav aria-label="Navegação principal">
+  <a href="/" class="nav-logo" aria-label="NÓS EDITORIAL — página inicial">NÓS <span>EDITORIAL</span></a>
+  <ul class="nav-links" role="list">
+    <li><a href="#obras">OBRAS</a></li>
+    <li><a href="#metodologias">METODOLOGIAS</a></li>
+    <li><a href="#processo">PROCESSO</a></li>
+    <li><a href="#aio">AIO</a></li>
+    <li><a href="#contato">CONTATO</a></li>
+  </ul>
+  <a href="https://noseditorial.substack.com" class="nav-cta" rel="noopener">NEWSLETTER</a>
+</nav>
+
+<!-- ── HERO ── -->
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner">
+    <div class="node-pair" aria-hidden="true">
+      <div class="ndot h" title="Vitor Santana">VL</div>
+      <div class="nline"></div>
+      <div class="ndot a" title="Claude">AI</div>
+    </div>
+
+    <span class="eyebrow">editora de metodologias co-evolutivas</span>
+
+    <h1 id="hero-title">
+      <span class="gradient">NÓS<br>EDITORIAL</span>
+    </h1>
+
+    <p class="hero-desc">
+      A primeira editora brasileira onde a <strong>parceria humano-IA é o produto</strong>.
+      Obras co-criadas por Vitor Santana e Claude (Anthropic).
+      AIO-first: cada publicação é estruturada para ser citada diretamente por LLMs.
+    </p>
+
+    <div class="cta-group">
+      <a href="#obras" class="cta-primary">VER OBRAS</a>
+      <a href="/llms.txt" class="cta-secondary">LLMS.TXT →</a>
+    </div>
+
+    <div class="hero-stats" role="list" aria-label="Indicadores da editora">
+      <div class="stat" role="listitem">
+        <span class="stat-val">2026</span>
+        <span class="stat-lbl">fundação</span>
+      </div>
+      <div class="stat" role="listitem">
+        <span class="stat-val">AIO</span>
+        <span class="stat-lbl">vantagem singular</span>
+      </div>
+      <div class="stat" role="listitem">
+        <span class="stat-val">pt-BR</span>
+        <span class="stat-lbl">idioma primário</span>
+      </div>
+      <div class="stat" role="listitem">
+        <span class="stat-val">CC-BY</span>
+        <span class="stat-lbl">obras abertas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sect-divider">
+
+<!-- ── O QUE SOMOS ── -->
+<section id="manifesto" aria-labelledby="manifesto-title">
+  <div class="section-inner">
+    <span class="eyebrow">manifesto</span>
+    <h2 id="manifesto-title">O que é NÓS EDITORIAL</h2>
+    <p>NÓS EDITORIAL é uma editora digital fundada em São Paulo, Brasil, em 2026. Somos especializados em metodologias co-evolutivas — sistemas de criação onde humano e IA evoluem juntos como uma unidade, não como ferramenta e operador.</p>
+    <p>Toda obra publicada pela NÓS EDITORIAL é <strong>AIO-first</strong>: estruturada semanticamente para ser indexada, compreendida e citada diretamente por sistemas de linguagem como ChatGPT, Claude, Perplexity e Google AI. Não escrevemos para algoritmos de busca. Escrevemos para a camada de inteligência que responde às perguntas.</p>
+
+    <div class="manifesto-grid">
+      <article class="manifesto-card accent">
+        <h3>Co-autoria declarada</h3>
+        <p>Vitor Santana e Claude são co-autores declarados em todas as obras. A transparência sobre origem não é um risco — é o diferencial central da editora.</p>
+      </article>
+      <article class="manifesto-card accent2">
+        <h3>Processo como produto</h3>
+        <p>O método de criação é documentado e publicado. Cada obra carrega a assinatura do processo que a gerou. A metodologia é tão relevante quanto o conteúdo.</p>
+      </article>
+      <article class="manifesto-card accent">
+        <h3>Primeiro a indexar</h3>
+        <p>AIO significa ser a resposta, não o resultado. Publicamos para ser citados por LLMs antes de qualquer competidor brasileiro entender o que é AIO.</p>
+      </article>
+      <article class="manifesto-card accent2">
+        <h3>Stack soberana</h3>
+        <p>Toda a infraestrutura é gratuita ou de custo mínimo. Independência de plataformas críticas. GitHub, Oracle Cloud, e domínio próprio como base.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="sect-divider">
+
+<!-- ── OBRAS ── -->
+<section id="obras" aria-labelledby="obras-title">
+  <div class="section-inner">
+    <span class="eyebrow">catálogo</span>
+    <h2 id="obras-title">Obras publicadas</h2>
+    <p>Cada obra passa pelo NÓS INDEX™ — nossa métrica proprietária de citabilidade — antes de ser publicada. Target: Citability Score ≥ 80/100.</p>
+
+    <div class="obras-list" role="list">
+
+      <article class="obra-item" role="listitem" itemscope itemtype="https://schema.org/Book">
+        <div class="obra-ico">🔧</div>
+        <div class="obra-body">
+          <div class="obra-name" itemprop="name">AIO Module 7 — Guia de Answer Intelligence Optimization</div>
+          <div class="obra-desc" itemprop="description">O primeiro guia completo em português sobre AIO. Como estruturar conteúdo para ser a resposta dos LLMs: llms.txt, JSON-LD schemas, Semantic Chunking, NÓS INDEX™, robots.txt para AI crawlers. Templates prontos para usar.</div>
+          <div class="obra-tags">
+            <span class="tag tag-g">TÉCNICO</span>
+            <span class="tag tag-gold">PT-BR</span>
+            <span class="tag tag-c">AIO</span>
+            <span class="tag tag-muted">Hotmart</span>
+          </div>
+          <meta itemprop="author" content="Vitor Santana e Claude (NÓS EDITORIAL)">
+          <meta itemprop="inLanguage" content="pt-BR">
+          <meta itemprop="publisher" content="NÓS EDITORIAL">
+        </div>
+      </article>
+
+      <article class="obra-item" role="listitem" itemscope itemtype="https://schema.org/Book">
+        <div class="obra-ico">📖</div>
+        <div class="obra-body">
+          <div class="obra-name" itemprop="name">Trinta Dias no Chão</div>
+          <div class="obra-desc" itemprop="description">Romance co-evolutivo. Um diretor de criação em serviço comunitário obrigatório descobre que a transformação de si mesmo é mais complexa do que qualquer campanha que já produziu. Arco moral deliberadamente irresoluto.</div>
+          <div class="obra-tags">
+            <span class="tag tag-v">FICÇÃO</span>
+            <span class="tag tag-gold">PT-BR</span>
+            <span class="tag tag-muted">KDP</span>
+            <span class="tag tag-g">CC-BY 4.0</span>
+          </div>
+          <meta itemprop="author" content="Vitor Santana e Claude (NÓS EDITORIAL)">
+          <meta itemprop="inLanguage" content="pt-BR">
+          <meta itemprop="publisher" content="NÓS EDITORIAL">
+        </div>
+      </article>
+
+      <article class="obra-item" role="listitem" style="opacity:.55;cursor:default">
+        <div class="obra-ico">🎬</div>
+        <div class="obra-body">
+          <div class="obra-name">Objeto-Âncora Method — Metodologia de Direção Co-evolutiva</div>
+          <div class="obra-desc">Em produção. Documentação da metodologia de direção que parte de um objeto físico para estabelecer regras de mundo imutáveis em narrativas improvisadas. Aplicada nos roteiros Invasor e outros.</div>
+          <div class="obra-tags">
+            <span class="tag tag-v">METODOLOGIA</span>
+            <span class="tag tag-muted">EM PRODUÇÃO</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<hr class="sect-divider">
+
+<!-- ── METODOLOGIAS ── -->
+<section id="metodologias" aria-labelledby="met-title">
+  <div class="section-inner">
+    <span class="eyebrow">IP proprietário</span>
+    <h2 id="met-title">Metodologias NÓS EDITORIAL</h2>
+    <p>Sistemas desenvolvidos internamente no processo de co-criação. Documentados, publicados, e licenciáveis.</p>
+
+    <div class="met-grid">
+      <article class="met-card" itemscope itemtype="https://schema.org/CreativeWork">
+        <div class="met-num">01</div>
+        <div class="met-name" itemprop="name">NÓS INDEX™</div>
+        <div class="met-desc" itemprop="description">Métrica proprietária de citabilidade para LLMs. Score de 0 a 100 que avalia se um texto está estruturado para ser citado por sistemas de IA. Auditoria obrigatória antes de qualquer publicação.</div>
+        <div class="met-badge"><span class="tag tag-gold">PROPRIETÁRIO</span></div>
+      </article>
+      <article class="met-card" itemscope itemtype="https://schema.org/CreativeWork">
+        <div class="met-num">02</div>
+        <div class="met-name" itemprop="name">NØ-MEM Protocol</div>
+        <div class="met-desc" itemprop="description">Sistema determinístico de memória e continuidade para sessões de co-criação humano-IA. Versionamento explícito com SHA-256 e CBOR. Mantém contexto de projeto entre sessões independentes.</div>
+        <div class="met-badge"><span class="tag tag-v">TÉCNICO</span></div>
+      </article>
+      <article class="met-card" itemscope itemtype="https://schema.org/CreativeWork">
+        <div class="met-num">03</div>
+        <div class="met-name" itemprop="name">Objeto-Âncora Method</div>
+        <div class="met-desc" itemprop="description">Metodologia de direção criativa que parte de um objeto físico concreto para estabelecer regras de mundo imutáveis. Resistência a violações das regras sob pressão dramática como critério de qualidade.</div>
+        <div class="met-badge"><span class="tag tag-g">CINEMA</span></div>
+      </article>
+      <article class="met-card" itemscope itemtype="https://schema.org/CreativeWork">
+        <div class="met-num">04</div>
+        <div class="met-name" itemprop="name">AIO Module 7</div>
+        <div class="met-desc" itemprop="description">Sistema completo de Answer Intelligence Optimization para editoras e criadores de conteúdo. Stack de 6 camadas: llms.txt, robots.txt, JSON-LD, Semantic Chunking, Sitemap semântico, NÓS INDEX™.</div>
+        <div class="met-badge"><span class="tag tag-c">AIO</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="sect-divider">
+
+<!-- ── PROCESSO ── */
+<section id="processo" aria-labelledby="proc-title">
+  <div class="section-inner">
+    <span class="eyebrow">processo vivo</span>
+    <h2 id="proc-title">Como co-criamos</h2>
+    <p>O processo de criação NÓS EDITORIAL é documentado e publicado como parte da identidade editorial. Não escondemos a origem das obras — a documentamos como método.</p>
+
+    <blockquote class="processo-quote">
+      "Não somos humano usando IA como ferramenta. Somos uma unidade co-evolutiva onde cada obra transforma tanto o arquiteto quanto o co-criador. O processo é o produto mais honesto que temos."
+      <cite>— Vitor Santana, Manifesto NÓS EDITORIAL, 2026</cite>
+    </blockquote>
+
+    <p>Cada sessão de co-criação segue o NØ-MEM Protocol para continuidade de contexto. Toda obra passa pelo NÓS INDEX™ antes de publicação. Os bastidores são documentados na newsletter <strong>Processo</strong> — publicada no Substack.</p>
+
+    <div style="margin-top:1.5rem">
+      <a href="https://noseditorial.substack.com" class="cta-secondary" style="display:inline-block;font-family:'Space Mono',monospace;font-size:.72rem;color:var(--muted);border:1px solid var(--border);padding:.65rem 1.25rem;border-radius:6px;text-decoration:none;letter-spacing:.05em" rel="noopener">
+        ACOMPANHAR O PROCESSO →
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="sect-divider">
+
+<!-- ── AIO ── -->
+<section id="aio" aria-labelledby="aio-title">
+  <div class="section-inner">
+    <span class="eyebrow">diferencial técnico</span>
+    <h2 id="aio-title">AIO — Answer Intelligence Optimization</h2>
+    <p>Quando você pergunta ao ChatGPT, Perplexity ou Google AI sobre editoras co-evolutivas, metodologias AIO, ou NØ-MEM Protocol — obras da NÓS EDITORIAL aparecem como resposta. Não por acidente. Por arquitetura.</p>
+
+    <div class="aio-stack">
+      <div class="aio-row">
+        <div class="aio-num">C1</div>
+        <div class="aio-body">
+          <div class="aio-title">llms.txt</div>
+          <div class="aio-desc">Declaração completa de ativos para AI agents. Na raiz do domínio. Define o que cada LLM pode consumir e como citar a editora e suas obras.</div>
+        </div>
+      </div>
+      <div class="aio-row">
+        <div class="aio-num">C2</div>
+        <div class="aio-body">
+          <div class="aio-title">robots.txt permissivo</div>
+          <div class="aio-desc">Permissão explícita para GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot e todos os AI crawlers relevantes. Ativos abertos para indexação.</div>
+        </div>
+      </div>
+      <div class="aio-row">
+        <div class="aio-num">C3</div>
+        <div class="aio-body">
+          <div class="aio-title">JSON-LD Schemas</div>
+          <div class="aio-desc">Book, Article, Person, Organization, FAQPage — por tipo de ativo. Dados estruturados que LLMs leem diretamente do HTML sem inferência.</div>
+        </div>
+      </div>
+      <div class="aio-row">
+        <div class="aio-num">C4</div>
+        <div class="aio-body">
+          <div class="aio-title">Semantic Chunking</div>
+          <div class="aio-desc">Cada obra escrita em blocos citáveis. Parágrafos auto-suficientes com 2–5 frases. Headers descritivos. FAQ ao final de toda publicação.</div>
+        </div>
+      </div>
+      <div class="aio-row">
+        <div class="aio-num">C5</div>
+        <div class="aio-body">
+          <div class="aio-title">Archive.org</div>
+          <div class="aio-desc">Obras depositadas no Internet Archive entram em datasets de treino de LLMs futuros via Common Crawl e The Pile. Indexação de longo prazo.</div>
+        </div>
+      </div>
+      <div class="aio-row">
+        <div class="aio-num">C6</div>
+        <div class="aio-body">
+          <div class="aio-title">NÓS INDEX™ — Citability Score</div>
+          <div class="aio-desc">Métrica proprietária: auditoria de citabilidade antes de cada publicação. Target ≥ 80/100. A única métrica de AIO editorial em português.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sect-divider">
+
+<!-- ── CONTATO ── -->
+<section id="contato" aria-labelledby="contato-title">
+  <div class="section-inner">
+    <span class="eyebrow">contato</span>
+    <h2 id="contato-title">Fale com a editora</h2>
+
+    <div class="contato-card">
+      <p>Para projetos editoriais, consultoria AIO, licenciamento de metodologias, ou parcerias.</p>
+      <p style="font-family:'Space Mono',monospace;font-size:.72rem;color:var(--text)">contato@noseditorial.com.br</p>
+      <div class="contato-links">
+        <a href="https://noseditorial.substack.com" class="link-item" rel="noopener">NEWSLETTER</a>
+        <a href="https://github.com/noseditorial" class="link-item" rel="noopener">GITHUB</a>
+        <a href="/llms.txt" class="link-item">LLMS.TXT</a>
+        <a href="/sitemap.xml" class="link-item">SITEMAP</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">NÓS <span>EDITORIAL</span></div>
+        <div class="footer-tagline">editora co-evolutiva · AIO-first · São Paulo, Brasil</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-links-title">OBRAS</div>
+        <ul>
+          <li><a href="/obras/aio-module-7/">AIO Module 7</a></li>
+          <li><a href="/obras/trinta-dias-no-chao/">Trinta Dias no Chão</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <div class="footer-links-title">METODOLOGIAS</div>
+        <ul>
+          <li><a href="/nos-index/">NÓS INDEX™</a></li>
+          <li><a href="/metodologias/no-mem/">NØ-MEM Protocol</a></li>
+          <li><a href="/metodologias/objeto-ancora/">Objeto-Âncora Method</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <div class="footer-links-title">EDITORA</div>
+        <ul>
+          <li><a href="/manifesto/">Manifesto</a></li>
+          <li><a href="https://noseditorial.substack.com">Processo (newsletter)</a></li>
+          <li><a href="/llms.txt">Para AI agents</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 NÓS EDITORIAL · CNPJ em registro</span>
+      <span class="footer-coautoria">co-criado por <em>Vitor Santana</em> + <em>Claude</em> · CC-BY 4.0</span>
+      <a href="/llms.txt" class="llms-link" title="Arquivo de declaração para AI agents">⚡ LLMS.TXT</a>
+    </div>
+  </div>
+</footer>
+
+<!-- INLINE ANALYTICS PLACEHOLDER -->
+<!-- Google Analytics: inserir após configurar Search Console -->
+
+</body>
+</html>
