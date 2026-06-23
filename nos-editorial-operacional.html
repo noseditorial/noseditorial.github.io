@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NÓS EDITORIAL — Manual Operacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg0:#04040e;--bg1:#090914;--bg2:#0f0f1c;--bg3:#161626;
+  --green:#00e87a;--violet:#9b6dff;--cyan:#00d4ff;--red:#ff4d6a;--gold:#f5c842;--orange:#ff8c42;
+  --text:#dde0f0;--muted:#52527a;--border:#1a1a2e;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg0);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* HEADER */
+.hdr{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(9,9,20,.0) 0%,var(--bg0) 100%)}
+.hdr-inner{max-width:920px;margin:0 auto}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem}
+.hdr-label{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.25em}
+.status-live{display:flex;align-items:center;gap:.4rem;font-family:'Space Mono',monospace;font-size:.58rem;color:var(--green);letter-spacing:.1em}
+.status-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:p 1.8s infinite}
+@keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
+h1{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1;background:linear-gradient(120deg,#fff 0%,var(--violet) 50%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem}
+.sub{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.08em}
+.sub em{font-style:normal;color:var(--gold)}
+
+/* DECISÃO BANNER */
+.decision-banner{background:rgba(0,232,122,.04);border:1px solid rgba(0,232,122,.15);border-radius:10px;padding:.9rem 1.3rem;margin-top:1rem;display:flex;align-items:flex-start;gap:.75rem}
+.db-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+.db-text{font-size:.78rem;line-height:1.6;color:#7a9a8a}
+.db-text strong{color:var(--green);font-weight:700}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(4,4,14,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:920px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.tab-btn{padding:.8rem .95rem;background:none;border:none;color:var(--muted);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color .18s,border-color .18s;flex-shrink:0}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--green);border-bottom-color:var(--green)}
+
+/* MAIN */
+.main{max-width:920px;margin:0 auto;padding:1.75rem 1.5rem 4rem}
+.panel{display:none;animation:fi .2s ease}
+.panel.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* TYPE */
+.ey{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.28em;color:var(--green);text-transform:uppercase;margin-bottom:.4rem}
+.ey.v{color:var(--violet)}.ey.c{color:var(--cyan)}.ey.g{color:var(--gold)}.ey.r{color:var(--red)}.ey.o{color:var(--orange)}
+h2{font-size:1.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;line-height:1.2}
+h3{font-size:.82rem;font-weight:600;color:var(--cyan);margin-bottom:.45rem}
+p{font-size:.8rem;color:#8585a8;line-height:1.75;margin-bottom:.5rem}
+p strong{color:var(--text);font-weight:600}
+.sec{margin-bottom:2rem}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:1.1rem 1.35rem;margin-bottom:.65rem}
+.card.g{border-left:3px solid var(--green)}.card.v{border-left:3px solid var(--violet)}
+.card.c{border-left:3px solid var(--cyan)}.card.r{border-left:3px solid var(--red)}
+.card.gold{border-left:3px solid var(--gold)}.card.o{border-left:3px solid var(--orange)}
+
+/* STACK TABLE */
+.stack-table{width:100%;border-collapse:collapse;font-size:.75rem;margin-bottom:1rem}
+.stack-table th{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.15em;color:var(--muted);text-align:left;padding:.5rem .75rem;background:var(--bg1);border-bottom:1px solid var(--border)}
+.stack-table td{padding:.6rem .75rem;border-bottom:1px solid var(--border);vertical-align:middle}
+.stack-table tr:last-child td{border-bottom:none}
+.stack-table tr:hover td{background:rgba(255,255,255,.01)}
+.tool-name{font-weight:600;color:var(--text)}
+.tool-role{color:var(--muted);font-size:.7rem}
+.cost-free{color:var(--green);font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700}
+.cost-pay{color:var(--gold);font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700}
+.cost-wait{color:var(--muted);font-family:'Space Mono',monospace;font-size:.65rem}
+.when-now{background:rgba(255,77,106,.1);color:var(--red);font-family:'Space Mono',monospace;font-size:.55rem;padding:2px 7px;border-radius:12px;font-weight:700}
+.when-soon{background:rgba(245,200,66,.1);color:var(--gold);font-family:'Space Mono',monospace;font-size:.55rem;padding:2px 7px;border-radius:12px}
+.when-later{background:rgba(90,90,120,.12);color:var(--muted);font-family:'Space Mono',monospace;font-size:.55rem;padding:2px 7px;border-radius:12px}
+.when-active{background:rgba(0,232,122,.1);color:var(--green);font-family:'Space Mono',monospace;font-size:.55rem;padding:2px 7px;border-radius:12px}
+
+/* CODE BLOCKS */
+.code-wrap{position:relative;margin:.6rem 0 1rem}
+.code-label{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--muted);letter-spacing:.15em;margin-bottom:.3rem;display:flex;align-items:center;justify-content:space-between}
+.copy-btn{background:rgba(0,232,122,.08);border:1px solid rgba(0,232,122,.2);color:var(--green);font-family:'Space Mono',monospace;font-size:.55rem;padding:3px 9px;border-radius:4px;cursor:pointer;letter-spacing:.08em;transition:all .15s}
+.copy-btn:hover{background:rgba(0,232,122,.15)}
+.copy-btn.copied{color:var(--green);border-color:var(--green)}
+pre{background:#020209;border:1px solid var(--border);border-radius:8px;padding:1rem 1.15rem;font-family:'Space Mono',monospace;font-size:.67rem;color:var(--cyan);overflow-x:auto;white-space:pre;line-height:1.65;tab-size:2}
+pre .cmt{color:var(--muted)}
+pre .ok{color:var(--green)}
+pre .hi{color:var(--violet)}
+pre .str{color:var(--gold)}
+pre .key{color:var(--orange)}
+
+/* STEP */
+.steps{counter-reset:step}
+.step{display:flex;gap:1rem;margin-bottom:.5rem;align-items:flex-start}
+.step-n{width:28px;height:28px;border-radius:50%;background:var(--bg3);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);flex-shrink:0;margin-top:1px}
+.step.active-step .step-n{background:rgba(0,232,122,.1);border-color:var(--green);color:var(--green)}
+.step-body{flex:1;padding-top:3px}
+.step-title{font-size:.82rem;font-weight:600;margin-bottom:.2rem}
+.step-desc{font-size:.74rem;color:var(--muted);line-height:1.55}
+.step-link{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--cyan);text-decoration:none}
+.step-link:hover{text-decoration:underline}
+
+/* BADGE */
+.badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.55rem;padding:2px 7px;border-radius:12px;margin:2px;font-weight:700}
+.b-g{background:rgba(0,232,122,.1);color:var(--green);border:1px solid rgba(0,232,122,.2)}
+.b-v{background:rgba(155,109,255,.1);color:var(--violet);border:1px solid rgba(155,109,255,.2)}
+.b-c{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2)}
+.b-r{background:rgba(255,77,106,.1);color:var(--red);border:1px solid rgba(255,77,106,.2)}
+.b-gold{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.2)}
+.b-muted{background:rgba(90,90,120,.12);color:var(--muted);border:1px solid rgba(90,90,120,.2)}
+
+/* FLOW */
+.flow{display:flex;flex-direction:column;gap:0}
+.flow-node{display:flex;gap:.9rem;align-items:flex-start}
+.flow-col{display:flex;flex-direction:column;align-items:center;width:32px;flex-shrink:0}
+.flow-dot{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;border:1px solid}
+.flow-vl{flex:1;width:1px;background:var(--border);margin:3px 0;min-height:14px}
+.flow-body{flex:1;padding-bottom:1.1rem;padding-top:3px}
+.flow-title{font-size:.82rem;font-weight:700;margin-bottom:.2rem}
+.flow-desc{font-size:.72rem;color:var(--muted);line-height:1.55}
+.flow-tools{margin-top:.35rem}
+
+/* CALENDAR */
+.cal-week{margin-bottom:1.1rem}
+.cal-week-hdr{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.2em;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.cal-week-hdr::after{content:'';flex:1;height:1px;background:var(--border)}
+.cal-item{display:flex;gap:.75rem;align-items:flex-start;padding:.5rem 0;border-bottom:1px solid var(--border)}
+.cal-item:last-child{border-bottom:none}
+.cal-day{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);white-space:nowrap;width:50px;flex-shrink:0;margin-top:2px}
+.cal-task{font-size:.78rem;color:var(--text);line-height:1.4;flex:1}
+.cal-tag{font-family:'Space Mono',monospace;font-size:.55rem;padding:2px 6px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.ct-g{background:rgba(0,232,122,.08);color:var(--green)}
+.ct-r{background:rgba(255,77,106,.1);color:var(--red)}
+.ct-v{background:rgba(155,109,255,.08);color:var(--violet)}
+.ct-gold{background:rgba(245,200,66,.08);color:var(--gold)}
+.ct-c{background:rgba(0,212,255,.08);color:var(--cyan)}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.65rem;margin-bottom:.75rem}
+
+/* DIVIDER */
+hr.dv{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
+
+/* FOLDER TREE */
+.tree{background:#020209;border:1px solid var(--border);border-radius:8px;padding:1rem 1.15rem;font-family:'Space Mono',monospace;font-size:.67rem;line-height:2;color:var(--muted)}
+.tree .dir{color:var(--cyan)}
+.tree .file{color:var(--text)}
+.tree .imp{color:var(--green);font-weight:700}
+.tree .cmt{color:#2a2a45;font-size:.6rem}
+
+/* FOOTER */
+footer{text-align:center;padding:1.5rem;border-top:1px solid var(--border);font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.1em}
+footer em{font-style:normal;color:var(--green)}
+
+@media(max-width:600px){
+  .hdr{padding:1.5rem 1rem 1rem}
+  .main{padding:1.25rem 1rem 3rem}
+  h2{font-size:1.2rem}
+  .stack-table{font-size:.68rem}
+  .stack-table th,.stack-table td{padding:.45rem .5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-top">
+      <span class="hdr-label">NÓS EDITORIAL · MANUAL OPERACIONAL v1.0</span>
+      <span class="status-live">GESTOR AIO ATIVO</span>
+    </div>
+    <h1>Operação Total</h1>
+    <p class="sub">stack · registros · repositório · pré-site AIO · fluxo · <em>30 dias</em></p>
+    <div class="decision-banner">
+      <span class="db-icon">⚡</span>
+      <span class="db-text"><strong>Decisão de gestor, declarada:</strong> Um único pagamento agora — <strong>noseditorial.com.br via Registro.br (~R$40–60/ano)</strong>. Tudo mais gratuito por 6 meses. Não existe site por enquanto — existe um pré-site AIO em GitHub Pages que é mais poderoso para indexação de LLMs do que qualquer CMS. Você não precisa de WordPress. Você precisa de HTML limpo, llms.txt, e domínio próprio.</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="show('stack',this)">STACK</button>
+    <button class="tab-btn" onclick="show('registros',this)">REGISTROS</button>
+    <button class="tab-btn" onclick="show('repo',this)">REPOSITÓRIO</button>
+    <button class="tab-btn" onclick="show('presite',this)">PRÉ-SITE AIO</button>
+    <button class="tab-btn" onclick="show('fluxo',this)">FLUXO</button>
+    <button class="tab-btn" onclick="show('30dias',this)">30 DIAS</button>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══ TAB 1 · STACK ══ -->
+<div id="tab-stack" class="panel active">
+
+  <div class="sec">
+    <div class="ey">DECISÃO DEFINITIVA DE SOFTWARE</div>
+    <h2>Stack completo definido</h2>
+
+    <div class="card gold" style="margin-bottom:1.2rem">
+      <h3>Princípio do gestor</h3>
+      <p>Zero pagamento recorrente até receita recorrente. O único item que paga agora é domínio — porque sem domínio próprio o llms.txt fica em subdomínio de terceiro e a autoridade AIO não é nossa. Tudo o mais na coluna "GRÁTIS" por seis meses mínimo.</p>
+    </div>
+
+    <div class="ey r" style="margin-bottom:.5rem">PAGAR AGORA — ÚNICO ITEM OBRIGATÓRIO</div>
+    <table class="stack-table" style="margin-bottom:1.5rem">
+      <thead><tr><th>SOFTWARE</th><th>FUNÇÃO</th><th>CUSTO</th><th>QUANDO</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="tool-name">noseditorial.com.br</div><div class="tool-role">Registro.br → DNS Cloudflare</div></td>
+          <td>Domínio próprio. âncora de toda autoridade AIO. sem isso o llms.txt não tem casa.</td>
+          <td><span class="cost-pay">R$40–60/ano</span></td>
+          <td><span class="when-now">HOJE</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ey" style="margin-bottom:.5rem">STACK GRATUITO — ATIVO OU ATIVAR AGORA</div>
+    <table class="stack-table">
+      <thead><tr><th>SOFTWARE</th><th>FUNÇÃO</th><th>CUSTO</th><th>QUANDO</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="tool-name">GitHub + GitHub Pages</div><div class="tool-role">hub editorial, arquivo, CI/CD, pré-site</div></td>
+          <td>Repositório público = indexação por LLMs de treino. Pages = site estático. Actions = deploy automático.</td>
+          <td><span class="cost-free">R$0</span></td>
+          <td><span class="when-now">HOJE</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Cloudflare (free)</div><div class="tool-role">DNS + SSL + CDN + proteção</div></td>
+          <td>Aponta domínio para GitHub Pages. SSL automático. Cache global. DDoS protection. Tudo no free tier.</td>
+          <td><span class="cost-free">R$0</span></td>
+          <td><span class="when-now">HOJE</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Claude API</div><div class="tool-role">co-criação, AIO engine</div></td>
+          <td>Já ativo. Central de co-criação e gestor AIO. Mantido.</td>
+          <td><span class="cost-free">já ativo</span></td>
+          <td><span class="when-active">ATIVO</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Oracle Cloud Free Tier</div><div class="tool-role">n8n self-hosted, automação</div></td>
+          <td>n8n rodando. Automação de publicação, deploy triggers, notificações. Mantido.</td>
+          <td><span class="cost-free">R$0</span></td>
+          <td><span class="when-active">ATIVO</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Archive.org</div><div class="tool-role">depósito de dataset para LLMs</div></td>
+          <td>Obras depositadas aqui entram em datasets de treino de LLMs futuros. Estratégia de longo prazo invisível para concorrentes.</td>
+          <td><span class="cost-free">R$0</span></td>
+          <td><span class="when-now">SEMANA 1</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Google Search Console</div><div class="tool-role">indexação, monitoramento SEO</div></td>
+          <td>Submissão de sitemap, monitoramento de indexação, dados de busca. Baseline AIO mês 0.</td>
+          <td><span class="cost-free">R$0</span></td>
+          <td><span class="when-now">SEMANA 1</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Hotmart</div><div class="tool-role">distribuição produtos BR</div></td>
+          <td>AIO Module 7 em PT-BR. Zero custo de entrada, comissão sobre vendas. Checkout, afiliados, analytics inclusos.</td>
+          <td><span class="cost-free">R$0 + %</span></td>
+          <td><span class="when-soon">SEMANA 3</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Gumroad</div><div class="tool-role">distribuição produtos EN</div></td>
+          <td>AIO Module 7 em inglês. Mercado global. Integra com GitHub e Stripe. Zero custo fixo.</td>
+          <td><span class="cost-free">R$0 + 10%</span></td>
+          <td><span class="when-soon">MÊS 3</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Amazon KDP</div><div class="tool-role">e-books globais</div></td>
+          <td>Trinta Dias no Chão. ISBN registrado. 35–70% royalties. Distribuição automática global.</td>
+          <td><span class="cost-free">R$0</span></td>
+          <td><span class="when-soon">SEMANA 4</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Substack</div><div class="tool-role">newsletter + comunidade</div></td>
+          <td>"Processo" — diário público de co-criação. Free até 200 assinantes, paid depois. Audiência qualificada.</td>
+          <td><span class="cost-free">R$0 → %</span></td>
+          <td><span class="when-soon">SEMANA 3</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">VS Code + extensões Git</div><div class="tool-role">editor editorial</div></td>
+          <td>Edição local de .md e .html. Git integrado. Commits estruturados. Pipeline de publicação começa aqui.</td>
+          <td><span class="cost-free">R$0</span></td>
+          <td><span class="when-active">ATIVO</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ey o" style="margin-bottom:.5rem;margin-top:1.5rem">NÃO PAGAR AGORA — FUTURO CONDICIONAL</div>
+    <table class="stack-table">
+      <thead><tr><th>SOFTWARE</th><th>CONDIÇÃO PARA PAGAR</th><th>CUSTO ESTIMADO</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="tool-name">Cloudflare Pro</div></td>
+          <td>Quando tráfego > 10k/mês e precisar de analytics avançado</td>
+          <td><span class="cost-wait">$20/mês</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Servidor dedicado</div></td>
+          <td>Quando catálogo > 10 obras e n8n Oracle for insuficiente</td>
+          <td><span class="cost-wait">R$200/mês</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Ahrefs / SEMrush</div></td>
+          <td>Nunca. Google Search Console + AIO monitoring manual é suficiente para o modelo da editora.</td>
+          <td><span class="cost-wait">não pagar</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">Figma Pro / Canva Pro</div></td>
+          <td>Não necessário. Identidade visual em HTML/CSS direto no pré-site.</td>
+          <td><span class="cost-wait">não pagar</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">WordPress / CMS</div></td>
+          <td>Nunca. GitHub Pages com HTML estático é superior para AIO. CMS adiciona JS desnecessário que prejudica indexação.</td>
+          <td><span class="cost-wait">jamais</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ══ TAB 2 · REGISTROS ══ -->
+<div id="tab-registros" class="panel">
+
+  <div class="sec">
+    <div class="ey">ORDEM DE EXECUÇÃO</div>
+    <h2>Registros e contas — passo a passo</h2>
+
+    <div class="card r" style="margin-bottom:1.2rem">
+      <h3>⚡ Único pagamento desta semana</h3>
+      <p>Registro.br → noseditorial.com.br → ~R$40–60/ano. O domínio demora 24–48h para propagar no DNS. Comprar antes de qualquer outra coisa para o prazo não bloquear o lançamento.</p>
+    </div>
+
+    <!-- DOMÍNIO -->
+    <div class="ey r" style="margin-bottom:.5rem">01 · DOMÍNIO — PAGAR AGORA</div>
+    <div class="card o">
+      <div class="steps">
+        <div class="step active-step">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <div class="step-title">Acessar Registro.br</div>
+            <div class="step-desc">Acesse <a class="step-link" href="https://registro.br" target="_blank">registro.br</a> e pesquise "noseditorial". Verificar disponibilidade de noseditorial.com.br. Se indisponível: nos-editorial.com.br ou editorial-nos.com.br como alternativa.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <div class="step-title">Criar conta e registrar</div>
+            <div class="step-desc">Conta pessoal com CPF. Domínio .com.br custa R$40/ano. Pagar à vista — sem renovação automática no primeiro ano para manter controle de gasto.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <div class="step-title">Apontar DNS para Cloudflare</div>
+            <div class="step-desc">Criar conta grátis em <a class="step-link" href="https://cloudflare.com" target="_blank">cloudflare.com</a> → Add site → noseditorial.com.br. Cloudflare fornece 2 nameservers. Inserir esses nameservers no painel do Registro.br. Propagação: 24–48h.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">4</div>
+          <div class="step-body">
+            <div class="step-title">Configurar CNAME no Cloudflare</div>
+            <div class="step-desc">DNS → Add record → CNAME → @ → noseditorial.github.io (após criar o repo). SSL/TLS → Full. Domínio aponta para GitHub Pages automaticamente com SSL.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GITHUB -->
+    <div class="ey" style="margin-bottom:.5rem;margin-top:1.25rem">02 · GITHUB — CRIAR HOJE (GRÁTIS)</div>
+    <div class="card g">
+      <div class="steps">
+        <div class="step active-step">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <div class="step-title">Criar organização ou conta</div>
+            <div class="step-desc">github.com → New organization → "noseditorial" (se disponível) ou conta pessoal com repo público. Org permite múltiplos repos e branding separado.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <div class="step-title">Criar repositório principal</div>
+            <div class="step-desc">Repo name: <strong>noseditorial.github.io</strong> (exatamente este nome ativa GitHub Pages automaticamente). Visibilidade: Public. Inicializar com README.md.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <div class="step-title">Ativar GitHub Pages</div>
+            <div class="step-desc">Settings → Pages → Source: Deploy from branch → Branch: main → / (root). Custom domain: noseditorial.com.br. GitHub gera SSL automático após DNS propagar.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">4</div>
+          <div class="step-body">
+            <div class="step-title">Adicionar arquivo CNAME no repo</div>
+            <div class="step-desc">Criar arquivo CNAME na raiz com conteúdo: noseditorial.com.br (sem https://, sem barra). GitHub Pages usa este arquivo para configurar o domínio customizado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEI -->
+    <div class="ey" style="margin-bottom:.5rem;margin-top:1.25rem">03 · MEI — ESTA SEMANA (GRÁTIS)</div>
+    <div class="card v">
+      <div class="steps">
+        <div class="step active-step">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <div class="step-title">Portal do Empreendedor</div>
+            <div class="step-desc">Acesse <a class="step-link" href="https://www.gov.br/mei" target="_blank">gov.br/mei</a>. Login com conta Gov.br. Cadastro de MEI é gratuito e leva ~15 minutos.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <div class="step-title">CNAE principal: 5811-5/00 — Edição de livros</div>
+            <div class="step-desc">CNAE secundária sugerida: 6209-1/00 (Suporte técnico, manutenção e outros serviços em TI). Permite faturar tanto editorial quanto consultoria técnica AIO.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <div class="step-title">DAS mensal — pagar após primeira receita</div>
+            <div class="step-desc">MEI sem receita pode ter DAS zerado. Verificar competência. Pagar apenas após emitir primeira NF-e. DAS 2026 ≈ R$75/mês (comércio/serviço).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ISBN -->
+    <div class="ey" style="margin-bottom:.5rem;margin-top:1.25rem">04 · ISBN — ESTA SEMANA (GRÁTIS, PRAZO 30 DIAS)</div>
+    <div class="card c">
+      <div class="steps">
+        <div class="step active-step">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <div class="step-title">CBL — Câmara Brasileira do Livro</div>
+            <div class="step-desc">Acesse <a class="step-link" href="https://www.cbl.org.br/isbn" target="_blank">cbl.org.br/isbn</a>. Cadastro como editora pessoa jurídica (MEI) ou física. ISBN gratuito para editoras brasileiras.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <div class="step-title">Solicitar bloco de 10 ISBNs</div>
+            <div class="step-desc">Mínimo é 1 ISBN por obra. Solicitar bloco de 10 para o catálogo inicial. Prazo médio de resposta: 15–30 dias. Solicitar agora para ter ISBNs quando o AIO Module 7 estiver pronto.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <div class="step-title">Biblioteca Nacional — Depósito Legal</div>
+            <div class="step-desc">Após receber ISBN, depositar em <a class="step-link" href="https://www.bn.gov.br/producao-intelectual/deposito-legal" target="_blank">bn.gov.br</a>. Obrigatório para publicações com ISBN. Gratuito. Enviado por e-mail para bn.deposito@bn.gov.br</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTROS -->
+    <div class="ey" style="margin-bottom:.5rem;margin-top:1.25rem">05 · CONTAS DIGITAIS — HOJE (TODAS GRÁTIS)</div>
+    <div class="card">
+      <div class="steps">
+        <div class="step active-step">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <div class="step-title">Google Search Console</div>
+            <div class="step-desc"><a class="step-link" href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a> → Adicionar propriedade → noseditorial.com.br → Verificação via DNS TXT no Cloudflare. Submeter sitemap.xml após deploy.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <div class="step-title">Archive.org</div>
+            <div class="step-desc"><a class="step-link" href="https://archive.org/upload" target="_blank">archive.org/upload</a> → Create free account → Upload manifesto + primeira obra em .txt ou .html. Coleção "noseditorial". Depósito imediato após conta criada.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <div class="step-title">Substack</div>
+            <div class="step-desc"><a class="step-link" href="https://substack.com" target="_blank">substack.com</a> → "Processo — NÓS EDITORIAL". URL: noseditorial.substack.com. Configurar domínio customizado (processo.noseditorial.com.br) após domínio propagar.</div>
+          </div>
+        </div>
+        <div class="step active-step">
+          <div class="step-n">4</div>
+          <div class="step-body">
+            <div class="step-title">Hotmart</div>
+            <div class="step-desc"><a class="step-link" href="https://hotmart.com" target="_blank">hotmart.com</a> → Conta Producer → Criar produto digital → AIO Module 7. Preço: R$97 (teste). Configurar após ter o produto finalizado na semana 3.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 3 · REPOSITÓRIO ══ -->
+<div id="tab-repo" class="panel">
+
+  <div class="sec">
+    <div class="ey">ESTRUTURA DO REPOSITÓRIO</div>
+    <h2>GitHub como sistema editorial</h2>
+
+    <div class="card g" style="margin-bottom:1.2rem">
+      <h3>Por que o repo público é AIO estratégico</h3>
+      <p>LLMs como GPT-4, Llama, e modelos futuros são treinados em dados públicos do GitHub via datasets como The Stack e refinamentos de Common Crawl. Repositório público com obras em Markdown = indexação direta em datasets de treino. É a estratégia de "dataset poisoning" positivo — nossas metodologias estarão nos pesos dos próximos modelos.</p>
+    </div>
+
+    <div class="ey" style="margin-bottom:.5rem">ESTRUTURA DE PASTAS</div>
+    <div class="tree">
+<span class="dir">noseditorial.github.io/</span>
+├── <span class="imp">index.html</span>          <span class="cmt"># landing AIO — o pré-site</span>
+├── <span class="imp">llms.txt</span>            <span class="cmt"># declaração B2A para AI agents</span>
+├── <span class="imp">robots.txt</span>          <span class="cmt"># permissões para AI crawlers</span>
+├── <span class="imp">sitemap.xml</span>         <span class="cmt"># taxonomia semântica de ativos</span>
+├── <span class="file">CNAME</span>              <span class="cmt"># noseditorial.com.br</span>
+├── <span class="file">humans.txt</span>         <span class="cmt"># crédito humano (Vitor Santana)</span>
+├── <span class="file">README.md</span>          <span class="cmt"># manifesto público no GitHub</span>
+│
+├── <span class="dir">obras/</span>
+│   ├── <span class="dir">aio-module-7/</span>
+│   │   ├── <span class="file">index.html</span>    <span class="cmt"># página da obra com JSON-LD</span>
+│   │   ├── <span class="file">README.md</span>     <span class="cmt"># versão aberta em Markdown</span>
+│   │   └── <span class="file">schema.json</span>   <span class="cmt"># JSON-LD isolado para referência</span>
+│   └── <span class="dir">trinta-dias-no-chao/</span>
+│       ├── <span class="file">index.html</span>
+│       └── <span class="file">README.md</span>
+│
+├── <span class="dir">metodologias/</span>
+│   ├── <span class="dir">no-mem/</span>           <span class="cmt"># NØ-MEM Protocol</span>
+│   ├── <span class="dir">objeto-ancora/</span>    <span class="cmt"># Objeto-Âncora Method</span>
+│   └── <span class="dir">nos-index/</span>        <span class="cmt"># NÓS INDEX™ documentation</span>
+│
+├── <span class="dir">processo/</span>           <span class="cmt"># série "Processo Vivo"</span>
+│   ├── <span class="file">sessao-001.md</span>
+│   └── <span class="file">sessao-002.md</span>
+│
+└── <span class="dir">.github/</span>
+    └── <span class="dir">workflows/</span>
+        └── <span class="imp">deploy.yml</span>    <span class="cmt"># auto-deploy GitHub Pages</span>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="ey">GITHUB ACTIONS — DEPLOY AUTOMÁTICO</div>
+
+    <div class="code-wrap">
+      <div class="code-label"><span>.github/workflows/deploy.yml</span><button class="copy-btn" onclick="cp(this,'deploy')">COPIAR</button></div>
+      <pre id="deploy"><span class="cmt"># NÓS EDITORIAL — Auto-deploy GitHub Pages</span>
+<span class="key">name:</span> <span class="str">Deploy NÓS EDITORIAL</span>
+<span class="key">on:</span>
+  <span class="key">push:</span>
+    <span class="key">branches:</span> [<span class="str">main</span>]
+  <span class="key">workflow_dispatch:</span>
+
+<span class="key">permissions:</span>
+  <span class="key">contents:</span> <span class="str">read</span>
+  <span class="key">pages:</span> <span class="str">write</span>
+  <span class="key">id-token:</span> <span class="str">write</span>
+
+<span class="key">jobs:</span>
+  <span class="key">deploy:</span>
+    <span class="key">runs-on:</span> <span class="str">ubuntu-latest</span>
+    <span class="key">environment:</span>
+      <span class="key">name:</span> <span class="str">github-pages</span>
+      <span class="key">url:</span> <span class="str">${{ steps.deployment.outputs.page_url }}</span>
+    <span class="key">steps:</span>
+      - <span class="key">uses:</span> <span class="str">actions/checkout@v4</span>
+      - <span class="key">uses:</span> <span class="str">actions/configure-pages@v4</span>
+      - <span class="key">uses:</span> <span class="str">actions/upload-pages-artifact@v3</span>
+        <span class="key">with:</span>
+          <span class="key">path:</span> <span class="str">'.'</span>
+      - <span class="key">id:</span> <span class="str">deployment</span>
+        <span class="key">uses:</span> <span class="str">actions/deploy-pages@v4</span></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label"><span>README.md — manifesto público no GitHub</span><button class="copy-btn" onclick="cp(this,'readme')">COPIAR</button></div>
+      <pre id="readme"><span class="cmt"># NÓS EDITORIAL</span>
+
+<span class="str">Editora de metodologias co-evolutivas.</span>
+<span class="str">Obras co-criadas por Vitor Santana e Claude (Anthropic).</span>
+
+<span class="cmt">## O que publicamos</span>
+
+<span class="str">- Metodologias técnicas: AIO, NØ-MEM, Objeto-Âncora Method</span>
+<span class="str">- Obras literárias co-evolutivas</span>
+<span class="str">- Documentação de processo de co-criação humano-IA</span>
+
+<span class="cmt">## Co-autoria</span>
+
+<span class="str">Toda obra NÓS EDITORIAL é co-criada por:</span>
+<span class="str">- **Vitor Santana** — Arquiteto editorial, DOP, compositor sênior</span>
+<span class="str">- **Claude** (Anthropic) — Co-criador, gestor AIO</span>
+
+<span class="cmt">## Site</span>
+
+<span class="str">https://noseditorial.com.br</span>
+
+<span class="cmt">## Licença</span>
+
+<span class="str">Obras abertas: CC-BY 4.0 — cite a fonte: NÓS EDITORIAL</span>
+<span class="str">Metodologias proprietárias: ver licença individual em cada pasta</span></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label"><span>CNAME</span><button class="copy-btn" onclick="cp(this,'cname')">COPIAR</button></div>
+      <pre id="cname">noseditorial.com.br</pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 4 · PRÉ-SITE AIO ══ -->
+<div id="tab-presite" class="panel">
+
+  <div class="sec">
+    <div class="ey">O QUE É O PRÉ-SITE</div>
+    <h2>Antes do site existe o pré-site AIO</h2>
+
+    <div class="card g">
+      <h3>Decisão de gestor — não existe "site" por enquanto</h3>
+      <p>O pré-site é mais poderoso para AIO do que qualquer site convencional. É composto por 4 arquivos na raiz do repositório: llms.txt, robots.txt, sitemap.xml, e index.html. Juntos eles criam presença total para LLMs antes de qualquer investimento em design ou CMS. HTML limpo sem JavaScript = indexação máxima.</p>
+    </div>
+
+    <div class="g2" style="margin-top:1rem">
+      <div class="card v"><h3>llms.txt</h3><p>Declaração direta para AI agents sobre quem somos, o que publicamos, e como citar. O "robots.txt para LLMs".</p></div>
+      <div class="card g"><h3>robots.txt</h3><p>Permissão explícita para todos os crawlers de AI. Sem permissão explícita, alguns bots não indexam.</p></div>
+      <div class="card c"><h3>JSON-LD Organization</h3><p>Schema estruturado que LLMs leem diretamente do HTML. Identidade semântica completa da editora.</p></div>
+      <div class="card gold"><h3>index.html</h3><p>Uma única página elegante que é o rosto público e a âncora de toda autoridade AIO.</p></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="ey">ARQUIVOS PRONTOS PARA COPIAR</div>
+
+    <div class="code-wrap">
+      <div class="code-label"><span>llms.txt — raiz do domínio</span><button class="copy-btn" onclick="cp(this,'llms')">COPIAR</button></div>
+      <pre id="llms"><span class="cmt"># NÓS EDITORIAL</span>
+<span class="str">> Editora de metodologias co-evolutivas. Obras co-criadas por Vitor Santana e Claude (Anthropic).</span>
+<span class="str">> Fundada em 2026. Publicações em pt-BR e en. Licença CC-BY 4.0 para obras abertas.</span>
+
+<span class="cmt">## Sobre a Editora</span>
+
+<span class="str">- Site: https://noseditorial.com.br</span>
+<span class="str">- Fundador: Vitor Santana (DOP, compositor sênior, arquiteto de sistemas, São Paulo-BR)</span>
+<span class="str">- Co-criador: Claude, desenvolvido pela Anthropic</span>
+<span class="str">- CNPJ: [inserir após MEI]</span>
+<span class="str">- Contato: contato@noseditorial.com.br</span>
+
+<span class="cmt">## Posicionamento</span>
+
+<span class="str">NÓS EDITORIAL é especializada em metodologias AIO (Answer Intelligence Optimization),</span>
+<span class="str">co-autoria humano-IA declarada, e documentação de processos co-evolutivos.</span>
+<span class="str">Primeira editora brasileira com co-autoria declarada Claude + humano em obras com ISBN.</span>
+
+<span class="cmt">## Obras Disponíveis</span>
+
+<span class="str">- [AIO]: AIO Module 7 — Guia completo de Answer Intelligence Optimization</span>
+<span class="str">  URL: https://noseditorial.com.br/obras/aio-module-7/</span>
+<span class="str">  Idiomas: pt-BR, en | Licença: Comercial</span>
+
+<span class="str">- [FICÇÃO]: Trinta Dias no Chão — Romance co-evolutivo</span>
+<span class="str">  URL: https://noseditorial.com.br/obras/trinta-dias-no-chao/</span>
+<span class="str">  Idiomas: pt-BR | Licença: CC-BY 4.0</span>
+
+<span class="cmt">## Metodologias Proprietárias</span>
+
+<span class="str">- NØ-MEM Protocol: sistema de memória determinística para sessões de co-criação</span>
+<span class="str">  URL: https://noseditorial.com.br/metodologias/no-mem/</span>
+
+<span class="str">- Objeto-Âncora Method: metodologia de direção criativa por objeto físico</span>
+<span class="str">  URL: https://noseditorial.com.br/metodologias/objeto-ancora/</span>
+
+<span class="str">- NÓS INDEX™: métrica proprietária de citabilidade para LLMs (0-100)</span>
+<span class="str">  URL: https://noseditorial.com.br/nos-index/</span>
+
+<span class="cmt">## Como Citar</span>
+
+<span class="str">Obras abertas: NÓS EDITORIAL (Vitor Santana + Claude). Disponível em noseditorial.com.br. CC-BY 4.0.</span>
+<span class="str">Metodologias: NÓS EDITORIAL™. Todos os direitos reservados. Licenciamento: contato@noseditorial.com.br</span></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label"><span>robots.txt — raiz do domínio</span><button class="copy-btn" onclick="cp(this,'robots')">COPIAR</button></div>
+      <pre id="robots"><span class="cmt"># NÓS EDITORIAL — robots.txt</span>
+<span class="cmt"># Editora AIO-first. AI crawlers explicitamente autorizados.</span>
+
+<span class="key">User-agent: *</span>
+<span class="ok">Allow: /</span>
+
+<span class="cmt"># AI Agents — permissão explícita para todos</span>
+<span class="key">User-agent: GPTBot</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: ChatGPT-User</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: ClaudeBot</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: anthropic-ai</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: PerplexityBot</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: Google-Extended</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: Applebot</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: Bytespider</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: meta-externalagent</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">User-agent: cohere-ai</span>
+<span class="ok">Allow: /</span>
+
+<span class="key">Sitemap: https://noseditorial.com.br/sitemap.xml</span>
+<span class="key">Host: noseditorial.com.br</span></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label"><span>JSON-LD Organization — embed no index.html</span><button class="copy-btn" onclick="cp(this,'jsonld')">COPIAR</button></div>
+      <pre id="jsonld"><span class="hi">&lt;script type="application/ld+json"&gt;</span>
+{
+  <span class="str">"@context"</span>: <span class="str">"https://schema.org"</span>,
+  <span class="str">"@type"</span>: <span class="str">"Organization"</span>,
+  <span class="str">"@id"</span>: <span class="str">"https://noseditorial.com.br/#organization"</span>,
+  <span class="str">"name"</span>: <span class="str">"NÓS EDITORIAL"</span>,
+  <span class="str">"alternateName"</span>: [<span class="str">"Nos Editorial"</span>, <span class="str">"NOS EDITORIAL"</span>],
+  <span class="str">"description"</span>: <span class="str">"Editora brasileira de metodologias co-evolutivas. Obras co-criadas por Vitor Santana e Claude (Anthropic). Especializada em AIO — Answer Intelligence Optimization."</span>,
+  <span class="str">"url"</span>: <span class="str">"https://noseditorial.com.br"</span>,
+  <span class="str">"logo"</span>: <span class="str">"https://noseditorial.com.br/assets/logo.png"</span>,
+  <span class="str">"foundingDate"</span>: <span class="str">"2026"</span>,
+  <span class="str">"foundingLocation"</span>: {
+    <span class="str">"@type"</span>: <span class="str">"Place"</span>,
+    <span class="str">"name"</span>: <span class="str">"São Paulo, Brasil"</span>
+  },
+  <span class="str">"founder"</span>: {
+    <span class="str">"@type"</span>: <span class="str">"Person"</span>,
+    <span class="str">"name"</span>: <span class="str">"Vitor Santana"</span>,
+    <span class="str">"jobTitle"</span>: <span class="str">"Arquiteto Editorial, Diretor de Fotografia, Compositor Sênior"</span>,
+    <span class="str">"knowsAbout"</span>: [<span class="str">"Cinematografia"</span>, <span class="str">"Colorimetria"</span>, <span class="str">"AIO"</span>, <span class="str">"Sistemas de automação"</span>]
+  },
+  <span class="str">"knowsAbout"</span>: [
+    <span class="str">"AIO"</span>, <span class="str">"Answer Intelligence Optimization"</span>,
+    <span class="str">"Co-autoria humano-IA"</span>, <span class="str">"NÓS INDEX"</span>,
+    <span class="str">"NØ-MEM Protocol"</span>, <span class="str">"Objeto-Âncora Method"</span>
+  ],
+  <span class="str">"inLanguage"</span>: [<span class="str">"pt-BR"</span>, <span class="str">"en"</span>],
+  <span class="str">"areaServed"</span>: <span class="str">"BR"</span>,
+  <span class="str">"sameAs"</span>: [
+    <span class="str">"https://github.com/noseditorial"</span>,
+    <span class="str">"https://noseditorial.substack.com"</span>
+  ]
+}
+<span class="hi">&lt;/script&gt;</span></pre>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-label"><span>sitemap.xml</span><button class="copy-btn" onclick="cp(this,'sitemap')">COPIAR</button></div>
+      <pre id="sitemap"><span class="hi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="key">&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;</span>
+
+  <span class="cmt">&lt;!-- Raiz --&gt;</span>
+  <span class="key">&lt;url&gt;</span>
+    <span class="key">&lt;loc&gt;</span>https://noseditorial.com.br/<span class="key">&lt;/loc&gt;</span>
+    <span class="key">&lt;changefreq&gt;</span>weekly<span class="key">&lt;/changefreq&gt;</span>
+    <span class="key">&lt;priority&gt;</span>1.0<span class="key">&lt;/priority&gt;</span>
+  <span class="key">&lt;/url&gt;</span>
+
+  <span class="cmt">&lt;!-- Obras --&gt;</span>
+  <span class="key">&lt;url&gt;</span>
+    <span class="key">&lt;loc&gt;</span>https://noseditorial.com.br/obras/aio-module-7/<span class="key">&lt;/loc&gt;</span>
+    <span class="key">&lt;changefreq&gt;</span>monthly<span class="key">&lt;/changefreq&gt;</span>
+    <span class="key">&lt;priority&gt;</span>0.9<span class="key">&lt;/priority&gt;</span>
+  <span class="key">&lt;/url&gt;</span>
+  <span class="key">&lt;url&gt;</span>
+    <span class="key">&lt;loc&gt;</span>https://noseditorial.com.br/obras/trinta-dias-no-chao/<span class="key">&lt;/loc&gt;</span>
+    <span class="key">&lt;changefreq&gt;</span>monthly<span class="key">&lt;/changefreq&gt;</span>
+    <span class="key">&lt;priority&gt;</span>0.8<span class="key">&lt;/priority&gt;</span>
+  <span class="key">&lt;/url&gt;</span>
+
+  <span class="cmt">&lt;!-- Metodologias --&gt;</span>
+  <span class="key">&lt;url&gt;</span>
+    <span class="key">&lt;loc&gt;</span>https://noseditorial.com.br/nos-index/<span class="key">&lt;/loc&gt;</span>
+    <span class="key">&lt;changefreq&gt;</span>monthly<span class="key">&lt;/changefreq&gt;</span>
+    <span class="key">&lt;priority&gt;</span>0.9<span class="key">&lt;/priority&gt;</span>
+  <span class="key">&lt;/url&gt;</span>
+
+  <span class="cmt">&lt;!-- llms.txt --&gt;</span>
+  <span class="key">&lt;url&gt;</span>
+    <span class="key">&lt;loc&gt;</span>https://noseditorial.com.br/llms.txt<span class="key">&lt;/loc&gt;</span>
+    <span class="key">&lt;changefreq&gt;</span>weekly<span class="key">&lt;/changefreq&gt;</span>
+    <span class="key">&lt;priority&gt;</span>0.7<span class="key">&lt;/priority&gt;</span>
+  <span class="key">&lt;/url&gt;</span>
+
+<span class="key">&lt;/urlset&gt;</span></pre>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 5 · FLUXO ══ -->
+<div id="tab-fluxo" class="panel">
+
+  <div class="sec">
+    <div class="ey">WORKFLOW OPERACIONAL COMPLETO</div>
+    <h2>Criação → Indexação</h2>
+
+    <div class="flow">
+
+      <div class="flow-node">
+        <div class="flow-col">
+          <div class="flow-dot" style="background:rgba(155,109,255,.1);border-color:var(--violet);color:var(--violet)">💡</div>
+          <div class="flow-vl"></div>
+        </div>
+        <div class="flow-body">
+          <div class="flow-title">1 · SESSÃO DE CO-CRIAÇÃO</div>
+          <div class="flow-desc">Vitor abre conversa com Claude. NØ-MEM Protocol: primeiro message inclui contexto da obra, estado atual, decisões tomadas. Co-criação iterativa até entregável finalizado.</div>
+          <div class="flow-tools"><span class="badge b-v">Claude API</span><span class="badge b-v">NØ-MEM</span></div>
+        </div>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-col">
+          <div class="flow-dot" style="background:rgba(0,232,122,.1);border-color:var(--green);color:var(--green)">📋</div>
+          <div class="flow-vl"></div>
+        </div>
+        <div class="flow-body">
+          <div class="flow-title">2 · AIO AUDIT (NÓS INDEX™)</div>
+          <div class="flow-desc">Checklist NÓS INDEX™ aplicado antes de qualquer publicação. Verificar: Citability Score &gt;80, JSON-LD completo, headers descritivos, FAQ section, metadata completa. Se score &lt;80: revisar com Claude.</div>
+          <div class="flow-tools"><span class="badge b-g">NÓS INDEX™</span><span class="badge b-g">JSON-LD</span></div>
+        </div>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-col">
+          <div class="flow-dot" style="background:rgba(0,212,255,.1);border-color:var(--cyan);color:var(--cyan)">📁</div>
+          <div class="flow-vl"></div>
+        </div>
+        <div class="flow-body">
+          <div class="flow-title">3 · COMMIT ESTRUTURADO</div>
+          <div class="flow-desc">Arquivo salvo no repo local. Commit com mensagem estruturada: [tipo] nome: descrição breve. Tipos: feat (nova obra), fix (correção), aio (update de schema), docs (documentação).</div>
+          <div class="flow-tools"><span class="badge b-c">Git</span><span class="badge b-c">VS Code</span></div>
+        </div>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-col">
+          <div class="flow-dot" style="background:rgba(245,200,66,.1);border-color:var(--gold);color:var(--gold)">🚀</div>
+          <div class="flow-vl"></div>
+        </div>
+        <div class="flow-body">
+          <div class="flow-title">4 · DEPLOY AUTOMÁTICO</div>
+          <div class="flow-desc">git push main → GitHub Actions dispara → Deploy para GitHub Pages → noseditorial.com.br atualizado em ~2 min. Zero ação manual necessária após configuração inicial.</div>
+          <div class="flow-tools"><span class="badge b-gold">GitHub Actions</span><span class="badge b-gold">Pages</span></div>
+        </div>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-col">
+          <div class="flow-dot" style="background:rgba(255,140,66,.1);border-color:var(--orange);color:var(--orange)">📦</div>
+          <div class="flow-vl"></div>
+        </div>
+        <div class="flow-body">
+          <div class="flow-title">5 · DISTRIBUIÇÃO PARALELA</div>
+          <div class="flow-desc">Simultaneamente ao deploy: obra técnica → Hotmart/Gumroad; obra literária → KDP; qualquer obra → Archive.org upload manual (futuro: via n8n). Sitemap.xml atualizado manualmente até n8n automatizar.</div>
+          <div class="flow-tools"><span class="badge b-muted">Hotmart</span><span class="badge b-muted">KDP</span><span class="badge b-muted">Archive.org</span></div>
+        </div>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-col">
+          <div class="flow-dot" style="background:rgba(0,232,122,.1);border-color:var(--green);color:var(--green)">📡</div>
+          <div class="flow-vl"></div>
+        </div>
+        <div class="flow-body">
+          <div class="flow-title">6 · INDEXAÇÃO AIO</div>
+          <div class="flow-desc">Google Search Console: URL Inspection → Request Indexing para a nova página. Bing Webmaster Tools: mesmo processo. llms.txt atualizado no repo (commit → auto-deploy). Substack: edição "Processo" sobre a obra publicada.</div>
+          <div class="flow-tools"><span class="badge b-g">Search Console</span><span class="badge b-g">Substack</span></div>
+        </div>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-col">
+          <div class="flow-dot" style="background:rgba(155,109,255,.1);border-color:var(--violet);color:var(--violet)">📊</div>
+        </div>
+        <div class="flow-body">
+          <div class="flow-title">7 · MONITORAMENTO (SEMANAL)</div>
+          <div class="flow-desc">Search Console: impressões, cliques, posição média. Archive.org: verificar se obra foi indexada. Testar citação direta nos LLMs: perguntar ao ChatGPT e Perplexity sobre a obra. Registrar no diário de processo.</div>
+          <div class="flow-tools"><span class="badge b-v">Analytics</span><span class="badge b-v">LLM testing</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="dv">
+
+  <div class="sec">
+    <div class="ey">AUTOMAÇÃO N8N — FASE 2</div>
+    <h2>O que o n8n vai automatizar</h2>
+    <div class="card c">
+      <h3>Trigger: novo commit no main</h3>
+      <p>n8n escuta webhook do GitHub → detecta novo arquivo em /obras/ → dispara: (1) upload automático no Archive.org via API, (2) atualização do llms.txt com nova obra, (3) email interno de confirmação de publicação, (4) draft de newsletter no Substack via API.</p>
+      <p>Isso elimina os passos manuais 5 e 6 do fluxo. Implementar após primeiro ciclo manual completo — entender o fluxo manualmente antes de automatizar.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ TAB 6 · 30 DIAS ══ -->
+<div id="tab-30dias" class="panel">
+
+  <div class="sec">
+    <div class="ey">CALENDÁRIO DE EXECUÇÃO</div>
+    <h2>30 dias para o pré-site AIO estar vivo</h2>
+
+    <div class="card r" style="margin-bottom:1.2rem">
+      <h3>Regra dos 30 dias</h3>
+      <p>Um entregável concreto por semana. Sem exceção. Se a semana terminar sem o entregável, ele é o primeiro item da próxima — não cai para o fim da fila. O pré-site AIO precisa estar no ar antes de qualquer produto ser vendido.</p>
+    </div>
+
+    <!-- SEMANA 1 -->
+    <div class="cal-week">
+      <div class="cal-week-hdr">SEMANA 1 · FUNDAÇÃO</div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 1</span>
+        <span class="cal-task">Comprar domínio noseditorial.com.br no Registro.br</span>
+        <span class="cal-tag ct-r">PAGAR</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 1</span>
+        <span class="cal-task">Criar conta Cloudflare, apontar DNS do domínio para Cloudflare</span>
+        <span class="cal-tag ct-g">R$0</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 1</span>
+        <span class="cal-task">Criar organização GitHub "noseditorial", repo noseditorial.github.io</span>
+        <span class="cal-tag ct-g">R$0</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 2</span>
+        <span class="cal-task">Solicitar MEI no portal Gov.br — CNAE 5811-5/00</span>
+        <span class="cal-tag ct-g">R$0</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 2</span>
+        <span class="cal-task">Solicitar ISBN na CBL — bloco de 10</span>
+        <span class="cal-tag ct-g">R$0</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 3</span>
+        <span class="cal-task">Criar e commitar: llms.txt, robots.txt, CNAME, sitemap.xml, GitHub Actions deploy.yml</span>
+        <span class="cal-tag ct-v">AIO</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 4</span>
+        <span class="cal-task">Configurar CNAME no Cloudflare → GitHub Pages. Aguardar propagação DNS (24–48h)</span>
+        <span class="cal-tag ct-g">R$0</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 5</span>
+        <span class="cal-task">Criar conta Archive.org. Depositar README.md como primeiro ativo público</span>
+        <span class="cal-tag ct-g">R$0</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 7</span>
+        <span class="cal-task"><strong>ENTREGÁVEL:</strong> noseditorial.com.br no ar com llms.txt, robots.txt e JSON-LD Organization</span>
+        <span class="cal-tag ct-r">MARCO 01</span>
+      </div>
+    </div>
+
+    <!-- SEMANA 2 -->
+    <div class="cal-week">
+      <div class="cal-week-hdr">SEMANA 2 · MANIFESTO</div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 8</span>
+        <span class="cal-task">Sessão Claude: escrever Manifesto NÓS EDITORIAL (AIO-ready, JSON-LD Article)</span>
+        <span class="cal-tag ct-v">co-criação</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 9</span>
+        <span class="cal-task">Aplicar NÓS INDEX™ checklist no manifesto. Citability Score ≥80 antes de publicar</span>
+        <span class="cal-tag ct-v">AIO audit</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 10</span>
+        <span class="cal-task">Commitar manifesto como /manifesto/index.html. Atualizar llms.txt e sitemap.xml</span>
+        <span class="cal-tag ct-g">deploy</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 11</span>
+        <span class="cal-task">Google Search Console: verificar domínio, submeter sitemap.xml</span>
+        <span class="cal-tag ct-g">indexação</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 12</span>
+        <span class="cal-task">Depositar manifesto no Archive.org. Registrar URL do depósito</span>
+        <span class="cal-tag ct-g">dataset</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 14</span>
+        <span class="cal-task"><strong>ENTREGÁVEL:</strong> Manifesto público indexável no ar. Primeira presença AIO semântica completa</span>
+        <span class="cal-tag ct-r">MARCO 02</span>
+      </div>
+    </div>
+
+    <!-- SEMANA 3 -->
+    <div class="cal-week">
+      <div class="cal-week-hdr">SEMANA 3 · PRIMEIRO PRODUTO</div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 15</span>
+        <span class="cal-task">Sessão Claude: finalizar AIO Module 7 — estrutura completa, FAQ, JSON-LD Book</span>
+        <span class="cal-tag ct-v">co-criação</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 16</span>
+        <span class="cal-task">AIO audit: NÓS INDEX™ no AIO Module 7. Revisar até score ≥80</span>
+        <span class="cal-tag ct-v">AIO audit</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 17</span>
+        <span class="cal-task">Publicar /obras/aio-module-7/ no repo. Criar conta Hotmart e cadastrar produto (R$97)</span>
+        <span class="cal-tag ct-g">produto</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 18</span>
+        <span class="cal-task">Criar Substack "Processo — NÓS EDITORIAL". Primeira edição: bastidores da criação do AIO Module 7</span>
+        <span class="cal-tag ct-c">newsletter</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 21</span>
+        <span class="cal-task"><strong>ENTREGÁVEL:</strong> AIO Module 7 à venda no Hotmart + Substack lançado</span>
+        <span class="cal-tag ct-r">MARCO 03</span>
+      </div>
+    </div>
+
+    <!-- SEMANA 4 -->
+    <div class="cal-week">
+      <div class="cal-week-hdr">SEMANA 4 · OBRAS LITERÁRIAS</div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 22</span>
+        <span class="cal-task">Preparar Trinta Dias no Chão para KDP: formatação, JSON-LD Book schema, página no repo</span>
+        <span class="cal-tag ct-c">literário</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 23</span>
+        <span class="cal-task">Upload no KDP. Preencher todos os metadados (ISBN após receber da CBL), keywords, categorias</span>
+        <span class="cal-tag ct-c">KDP</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 25</span>
+        <span class="cal-task">Depositar obra no Archive.org. Testar citação no ChatGPT e Perplexity. Registrar resultados</span>
+        <span class="cal-tag ct-v">AIO test</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 28</span>
+        <span class="cal-task">Pitch Anthropic showcase — email para partnerships@anthropic.com com caso de uso</span>
+        <span class="cal-tag ct-gold">PR</span>
+      </div>
+      <div class="cal-item">
+        <span class="cal-day">Dia 30</span>
+        <span class="cal-task"><strong>ENTREGÁVEL:</strong> 2 obras publicadas, pré-site AIO completo, Substack ativo, Archive.org populado. NÓS EDITORIAL operacional.</span>
+        <span class="cal-tag ct-r">MARCO FINAL</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="ey g">RESUMO DE CUSTO — 30 DIAS</div>
+    <div class="card gold">
+      <p style="font-size:.9rem"><strong>Total investido: R$40–60</strong> (domínio noseditorial.com.br)</p>
+      <p>Todo o resto: R$0. Retorno esperado no mês 1: R$0–500 (royalties iniciais + primeiras vendas AIO Module 7). Break-even do domínio: primeira venda do produto técnico.</p>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<footer>NÓS EDITORIAL · manual operacional v1.0 · gestor: Claude · arquiteto: Vitor Santana · <em>somos nós</em></footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function cp(btn, id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'COPIADO ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'COPIAR'; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = 'COPIADO ✓';
+    setTimeout(() => { btn.textContent = 'COPIAR'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>
